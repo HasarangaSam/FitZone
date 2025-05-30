@@ -1,1 +1,1 @@
-"# FitZone" 
+A full stack web application built for "FitZone" gym using HTML, CSS, JavaScript, and PHP, featuring three user roles—Customer, Admin, and Staff—where customers can register for classes, book sessions, read blogs and send inquiries, while Admins and Staff manage the system according to their access levels.
