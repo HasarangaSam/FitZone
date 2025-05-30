@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Form</title>
+  <link rel="icon" type="image/x-icon" href="images/logo.jpg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script>
+    function validate() {
+      const fname = document.signupForm.fname.value;
+      const password = document.getElementById("pw").value;
+      const confirmPass = document.getElementById("cpw").value;
+      const lname = document.signupForm.lname.value;
+      const email = document.signupForm.email.value;
+      const contact_no = document.signupForm.contact_no.value;
+      const gender = document.signupForm.gender.value;
+
+      if (fname == "") {
+        alert("Please provide your first name");
+        return false;
+      }
+      if (lname == "") {
+        alert("Please provide your last name");
+        return false;
+      }
+      if (email == "") {
+        alert("Please provide your email");
+        return false;
+      }
+      if (gender == "") {
+        alert("Please select your gender");
+        return false;
+      }
+      if (password == "") {
+        alert("Please provide a password");
+        return false;
+      }
+      if (confirmPass == "") {
+        alert("Please provide the confirm password");
+        return false;
+      }
+      if (email.indexOf("@") <= 1 || 
+          (document.signupForm.email.value.lastIndexOf(".") - document.signupForm.email.value.indexOf("@") < 2)) {
+        alert("Please enter a correct email address");
+        return false;
+      }
+      if (contact_no.length != 10 || isNaN(contact_no)) {
+                alert("Please enter a valid contact number");
+                return false;
+      }
+      if (password.length < 8) {
+        alert("Password must contain at least 8 characters");
+        return false;
+      }
+      if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/.test(password)) {
+        alert("Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long.");
+        return false;
+      }
+      if (confirmPass != password) {
+        alert("Confirm password doesn't match");
+        return false;
+      }
+      document.signupForm.submit();
+      return true;
+    }
+  </script>
+</head>
+
+<body>
+<header class="header">
+    <nav class="navigation">
+      <img src="images/logo.jpg" alt="Logo" class="logo">
+      <ul>
+          <li><a href="home.php">Home</a></li>
+          <li><a href="about.php">About</a></li>
+          <li><a href="membership.php">Memberships</a></li>
+          <li><a href="classes.php">Classes</a></li>
+          <li><a href="training.php">Personal Training</a></li>
+          <li><a href="blog.php">Blog</a></li>
+          <li><a href="contact.php">Contact Us</a></li>
+          <li><a href="signup.html">My Account</a></li>
+          <li><a href="signup.html" class="register-link">Sign up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="signup-section">
+    <div class="signup-container">
+      <div class="signup-form">
+        <header>Sign up</header>
+        <form action="staff_signup.php" method="post" name="signupForm" onsubmit="return validate()">
+          <div class="input-row">
+            <input type="text" name="fname" placeholder="First Name">
+            <input type="text" name="lname" placeholder="Last Name">
+          </div>
+          <input type="text" name="email" placeholder="Email">
+          <input type="text" name="contact_no" placeholder="Contact Number">
+          <select id="gender" name="gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select><br><br>
+          <input type="password" id="pw" name="pw" placeholder="Password (8+ characters, including uppercase, lowercase, number & symbol)">
+          <input type="password" id="cpw" name="cpw" placeholder="Confirm Password">
+
+          <input type="submit" class="button" value="Sign up">
+        </form>
+        <div class="signup-footer">
+          <span>Already have an account? <a href="login.html">Login</a></span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+        <!-- Social Media Section -->
+        <div class="social-media">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="quick-links">
+            <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="membership.php">Memberships</a></li>
+                    <li><a href="classes.php">Classes</a></li>
+                    <li><a href="training.php">Personal Trainings</a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
+                </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-details">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-map-marker-alt"></i> FitZone Fitness Center, 123 Gym Street, Kurunegala</p>
+            <p><i class="fas fa-envelope"></i> info@fitzone.com</p>
+            <p><i class="fas fa-phone"></i> +94 77 123 4567</p>
+        </div>
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="footer-bottom">
+        <p>&copy; 2024 FitZone Fitness Center. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

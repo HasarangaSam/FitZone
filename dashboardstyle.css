@@ -1,0 +1,280 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --background-main: #fafaff;
+  --background-sidebar: #ffffff;
+  --primary-color: #4b49ac;
+  --border-color: #3f0097;
+  --highlight-color: #f78243; 
+}
+
+body {
+  background-color: var(--background-main);
+  max-width: 100%;
+  overflow: hidden; /* Prevent body overflow */
+}
+
+/* Header styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  height: 70px;
+  background-color: var(--background-main);
+  box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 600;
+  color: #2f8d46;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.icon, .profile-icon {
+  height: 50px;
+}
+
+/* Container styles */
+.container {
+  display: flex; /* Ensure the sidebar and main content are aligned side by side */
+  height: calc(100vh - 70px); /* Full height minus the header */
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 280px;
+  background-color: var(--background-sidebar);
+  box-shadow: 1px 1px 10px rgba(198, 189, 248, 0.825);
+  padding: 10px;
+  position: -webkit-sticky; 
+  position: sticky;
+  top: 70px; 
+  overflow-y: auto; /* Enables scrolling if content overflows */
+}
+
+/* Main content styles */
+.main-content {
+  flex: 1; /* Allow main content to fill available space */
+  padding: 30px;
+  overflow-y: auto; /* Allows scrolling in the main content area */
+}
+
+/* Navigation item styles */
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px; 
+  margin-bottom: 10px; 
+  gap: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-left 0.3s;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  border-left: 5px solid var(--border-color);
+  background-color: var(--highlight-color);
+}
+
+.nav-icon {
+  height: 30px;
+}
+
+/* User Management Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+table th {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9; 
+}
+
+table tbody tr:hover {
+  background-color: var(--highlight-color); 
+}
+
+/* Button Styles */
+.main-content a {
+  display: inline-block;
+  padding: 8px 12px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+
+/* Update Button Style */
+.updateBtn,.approveBtn {
+  background-color: #4CAF50; 
+  margin-bottom: 5px;
+}
+
+.updateBtn:hover,.approveBtn:hover {
+  background-color: #45a049; 
+}
+
+/* Delete Button Style */
+.deleteBtn,.cancelBtn {
+  background-color: #f44336; 
+}
+
+.deleteBtn:hover,.cancelBtn:hover {
+  background-color: #d32f2f; 
+}
+
+/* Add New User Button Style */
+.addBtn {
+  display: inline-block;
+  padding: 15px 21px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #3f51b5;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 0px;
+  transition: background-color 0.3s;
+}
+
+.addBtn:hover {
+  background-color: #303f9f; 
+}
+
+/* User List Heading Style */
+.main-content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 3px solid var(--highlight-color);
+  padding-bottom: 10px;
+}
+
+/* Forms Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+form input,
+form select,
+form textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form textarea {
+  min-height: 100px; 
+  max-height: 300px; 
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+.back-button {
+  background-color: #ff5722; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  margin-top: 10px; 
+  cursor: pointer; 
+  font-size: 16px; 
+  border-radius: 5px; 
+  transition: background-color 0.3s ease; 
+}
+
+.back-button:hover {
+  background-color: #e64a19; 
+}
+
+.submit-button {
+  background-color: #4CAF50; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  margin-top: 10px; 
+  cursor: pointer; 
+  font-size: 16px; 
+  border-radius: 5px; 
+  transition: background-color 0.3s ease; 
+}
+
+.submit-button:hover {
+  background-color: #45a049; 
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-input {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.search-button, .clear-button {
+  background-color: #ff5722; 
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #e64a19; 
+}
+
+.clear-button {
+  background-color: #757575; 
+}
+
+.clear-button:hover {
+  background-color: #616161; 
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css"> 
+
+  <link rel="icon" type="image/x-icon" href="images/logo.jpg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+    
+    /* Centering the main container */
+    main {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      min-height: 80vh; 
+    }
+
+    .container {
+      max-width: 450px;
+      width: 100%;
+      background-color: #222;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+    }
+
+    .form header {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #e67017;
+    }
+
+    .input-field {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+
+    input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px #333 inset !important; 
+      box-shadow: 0 0 0 30px #333 inset !important; 
+      -webkit-text-fill-color: #fff !important; 
+    }
+
+    .loginForm ::placeholder {
+      color: #ffffff7a;
+      font-weight: bold; 
+    }
+
+    .input-field input {
+      width: 100%;
+      padding-left: 45px; 
+      padding-right: 45px; 
+      height: 50px; 
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      background-color: #333;
+      color: #fff;
+      outline: none;
+    }
+
+    
+    .input-field .icon-left {
+      position: absolute;
+      left: 15px;
+      top: 35%; 
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #fff;
+    }
+
+   
+    .input-field .toggle-password {
+      position: absolute;
+      right: 15px;
+      top: 35%; 
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .input-field .toggle-password:hover {
+      color: #e67017; 
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px; 
+      margin-top: 5px; 
+      min-height: 20px; 
+    }
+
+    .form a {
+      font-size: 16px;
+      color: #009579;
+      text-decoration: none;
+    }
+
+    .form a:hover {
+      text-decoration: underline;
+    }
+
+    .form input.button {
+      color: #fff;
+      background: #e67017;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      padding: 15px 0;
+      border-radius: 6px;
+      width: 100%; /* Ensures the button takes up the full width of the form */
+      text-align: center; /* Centers the button text */
+      transition: background-color 0.3s;
+      display: block; 
+      margin-top: 1rem; /* Adds a little margin above the button */
+    }
+
+    .form input.button:hover {
+      background: #d15d06;
+    }
+
+    .signup {
+      font-size: 16px;
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #fff;
+    }
+
+    .signup a {
+      color: #e67017;
+      text-decoration: none;
+    }
+
+    .signup a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <script>
+    function validate() {
+      // Clear previous error messages
+      document.getElementById('email-error').innerText = '';
+      document.getElementById('password-error').innerText = '';
+
+      let valid = true; 
+
+      if (document.loginForm.email.value === "") {
+        document.getElementById('email-error').innerText = "Please provide your email.";
+        valid = false;
+      }
+
+      if (document.loginForm.password.value === "") {
+        document.getElementById('password-error').innerText = "Please provide your password.";
+        valid = false;
+      }
+
+      return valid;
+    }
+
+    function togglePassword() {
+      const passwordInput = document.querySelector('input[name="password"]');
+      const toggleIcon = document.querySelector('.toggle-password');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+<header class="header">
+    <nav class="navigation">
+      <img src="images/logo.jpg" alt="Logo" class="logo">
+      <ul>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="membership.php">Memberships</a></li>
+        <li><a href="classes.php">Classes</a></li>
+        <li><a href="training.php">Personal Training</a></li>
+        <li><a href="blog.php">Blog</a></li>
+        <li><a href="contact.php">Contact Us</a></li>
+        <li><a href="customer.php">My Account</a></li>
+       <li><a href="signup.html" class="register-link">Sign up</a></li>
+    </ul>
+    </nav>
+</header>
+
+<main>
+  <div class="container">
+    <div class="form">
+      <header>Login</header>
+      <form action="login.php" method="post" name="loginForm" onsubmit="return validate()">
+        
+        <!-- Email input field -->
+        <div class="input-field">
+          <i class="fas fa-envelope icon-left"></i>
+          <input type="text" name="email" placeholder="Email">
+          <div class="error-message" id="email-error"></div> <!-- Error message for email -->
+        </div>
+
+        <!-- Password input field with toggle -->
+        <div class="input-field">
+          <i class="fas fa-lock icon-left"></i>
+          <input type="password" name="password" placeholder="Password">
+          <i class="fas fa-eye toggle-password" onclick="togglePassword()"></i>
+          <div class="error-message" id="password-error"></div> <!-- Error message for password -->
+        </div>
+
+        <!-- Submit button -->
+        <input type="submit" value="Login" class="button">
+        <div class="signup">Don't have an account? <a href="signup.html">Sign up</a></div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-content">
+
+      <div class="social-media">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+      </div>
+
+
+      <div class="quick-links">
+          <h3>Quick Links</h3>
+              <ul>
+                  <li><a href="home.php">Home</a></li>
+                  <li><a href="about.php">About Us</a></li>
+                  <li><a href="membership.php">Memberships</a></li>
+                  <li><a href="classes.php">Classes</a></li>
+                  <li><a href="training.php">Personal Trainings</a></li>
+                  <li><a href="contact.php">Contact Us</a></li>
+              </ul>
+      </div>
+
+
+      <div class="contact-details">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-map-marker-alt"></i> FitZone Fitness Center, 123 Gym Street, Kurunegala</p>
+          <p><i class="fas fa-envelope"></i> info@fitzone.com</p>
+          <p><i class="fas fa-phone"></i> +94 77 123 4567</p>
+      </div>
+  </div>
+
+ 
+  <div class="footer-bottom">
+      <p>&copy; 2024 FitZone Fitness Center. All Rights Reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
+
+
